@@ -1,1 +1,1 @@
-web: gunicorn Grades.wsgi --log-file -
+web: gunicorn grades.wsgi --log-file -
