@@ -1,0 +1,33 @@
+body, html{
+	margin:0;
+	background-color: #EAEAEA;
+}
+
+h1,h2,h3,h4,h5{
+	padding: 0;
+	margin: 0;
+}
+
+.card li{
+	padding-top: 5px !important;
+}
+	.card li a{
+		color: white !important;
+	}
+		.card li a:hover{
+			color: #ffab40 !important;
+		}
+
+/**** Espaciado ****/
+
+.padding{
+	padding: 10px !important;
+}
+
+.padding-top{
+	padding-top: 10px;
+}
+
+.no-padding{
+	padding: 0;
+}

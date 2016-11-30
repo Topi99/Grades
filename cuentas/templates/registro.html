@@ -1,0 +1,72 @@
+{%extends 'base.html'%}
+
+{%block titulo%}
+	¡Registrate!
+{%endblock titulo%}
+
+{%block content%}
+	
+	{%if form.errors%}
+          <p>Tu usuario y contraseña no coinciden, intenta de nuevo</p>
+  {%else%}
+          <p>Ingresa con tu nombre de usurio y contraseña</p>
+  {%endif%}
+
+
+	{%if tipo == null%}
+		<form action="." method="post" class=" col s12">
+			{%csrf_token%}
+			
+			<div id="options">
+				
+				<p>
+				
+					<input name="tipo" type="radio" id="prof" value="prof" class="with-gap" />
+	      	<label for="prof">Profesor</label>
+
+				</p>
+
+	      <p>
+	      	
+	      	<input name="tipo" type="radio" id="padre" value="padre" class="with-gap" />
+	      	<label for="padre">Padre</label>
+
+	      </p>
+
+	      <p>
+	      	
+	      	<input name="tipo" type="radio" id="alumno" value="alumno" class="with-gap" />
+		      <label for="alumno">Alumno</label>
+
+	      </p>
+				
+			</div>
+
+			<a href="#" id="select">Seguir</a>	
+
+			<div id="registro">
+				
+				{{form.as_p}}
+
+				<input type="submit" class="btn">
+
+			</div>		
+
+		</form>
+	{%else%}
+
+		<p>{{tipo}}</p>
+
+	{%endif%}
+
+{%endblock content%}
+
+{%block scripts%}
+	$('#registro').hide();
+	$("#select").on("click", function(){
+		$('#options').fadeOut();
+		$('#select').fadeOut();
+		$('#registro').fadeIn();
+	})
+
+{%endblock scripts%}
