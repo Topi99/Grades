@@ -13,7 +13,7 @@ SECRET_KEY = 'r^syt+-pab%x=kz4x1f5%u@rb2h_a2%8ke27c7=$paek^7=&hb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['easy-grades.herokuapp.com']
+ALLOWED_HOSTS = ['easy-grades.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'cuentas',
+    'rest_framework',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -117,3 +118,7 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES':['rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly']
+}
