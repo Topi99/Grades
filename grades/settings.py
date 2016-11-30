@@ -13,7 +13,7 @@ SECRET_KEY = 'r^syt+-pab%x=kz4x1f5%u@rb2h_a2%8ke27c7=$paek^7=&hb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['easy-grades.herokuapp.com']
 
 
 # Application definition
