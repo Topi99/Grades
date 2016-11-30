@@ -1,0 +1,13 @@
+{%extends 'base.html'%}
+
+{%block titulo%}
+	Padres
+{%endblock titulo%}
+
+{%block content%}
+
+	{%for padre in object_list%}
+		<p> {{padre.id}}.- {{padre.user.username}} </p>
+	{%endfor%}
+
+{%endblock content%}

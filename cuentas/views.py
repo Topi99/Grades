@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import View
+from django.views.generic import View, ListView
 
 from .forms import UserRegistroForm
 
@@ -47,3 +47,6 @@ class Registro(View):
 		else:
 			print("Error")
 			return render(request, template_name)
+
+class PadresListView(ListView):
+	model = Padre
