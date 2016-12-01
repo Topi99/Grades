@@ -10,7 +10,7 @@ from django.conf import settings
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include(UrlsMain, namespace='main')),
-    url(r'^cuentas/', include(UrlsCuentas, namespace='cuentas')),
+    url(r'^accounts/', include(UrlsCuentas, namespace='cuentas')),
     url(
         regex=r'^media/(?P<path>.*)/$',
         view=serve,

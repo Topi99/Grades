@@ -1,0 +1,18 @@
+{%extends 'base.html' %}
+
+{%block titulo%}
+	Dashboard
+{%endblock titulo%}
+
+{%block content%}
+	<form action="." method="post" enctype="multipart/form-data">
+		
+		{%csrf_token%}
+		
+		{{form_user.as_p}}
+		{{form.as_p}}
+		
+		<input type="submit" class="btn blue accent-2" value="Guardar">
+
+	</form>
+{%endblock content%}

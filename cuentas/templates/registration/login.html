@@ -1,0 +1,24 @@
+{%extends 'base.html'%}
+{%block titulo%}
+        Login
+{%endblock titulo%}
+
+{%block content%}
+
+        {%if form.errors%}
+                <p>Tu usuario y contraseña no coinciden, intenta de nuevo</p>
+        {%else%}
+                <p>Ingresa con tu nombre de usurio y contraseña</p>
+        {%endif%}
+       
+        <div class="login-form">
+                <form action="{%url 'cuentas:login'%}" method="post">
+                        {%csrf_token%}
+                        {{form.as_p}}
+                        <input type="hidden" name="next" value="{{next}}">
+                        <input type="submit" class="btn" value="Iniciar Sesion">
+                </form>
+                <p>O registrate <a href="{%url 'cuentas:registro'%}">aquí</a></p>
+        </div>
+
+{%endblock content%}

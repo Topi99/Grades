@@ -19,6 +19,7 @@ ALLOWED_HOSTS = ['easy-grades.herokuapp.com', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'cuentas',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -26,7 +27,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
-    'cuentas',
     'rest_framework',
 ]
 
@@ -113,6 +113,9 @@ STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 #Update database configuration with $DATABASE_URL.
 import dj_database_url
