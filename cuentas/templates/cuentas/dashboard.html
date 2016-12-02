@@ -1,4 +1,5 @@
 {%extends 'base.html' %}
+{%load static%}
 
 {%block titulo%}
 	Dashboard
@@ -16,3 +17,28 @@
 
 	</form>
 {%endblock content%}
+
+{%block extras%}
+
+<div class="chip">
+
+	{%if request.user.alumno.profesor.avatar%}
+		<img src="{{request.user.alumno.profesor.avatar.url}}" alt="">
+	{%else%}
+		<img src="{%static 'img/silueta.jpg'%}" alt="">
+	{%endif%}
+
+	Nombre Profesor: <b>{{request.user.alumno.profesor.user.first_name}}</b> | ID: <b>{{request.user.alumno.profesor.id}}</b>
+</div>
+
+
+<div class="chip">
+	{%if request.user.alumno.profesor.user.avatar%}
+		<img src="{{request.user.alumno.profesor.user.url}}" alt="">
+	{%else%}
+		<img src="{%static 'img/silueta.jpg'%}" alt="">
+	{%endif%}
+	Nombre Padre: <b>{{request.user.alumno.padre.user.first_name}}</b> | ID: <b>{{request.user.alumno.padre.id}}</b>
+</div>
+
+{%endblock extras%}

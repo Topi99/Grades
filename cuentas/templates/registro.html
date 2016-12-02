@@ -63,10 +63,21 @@
 
 {%block scripts%}
 	$('#registro').hide();
+	$('#registro_a').hide();
+
 	$("#select").on("click", function(){
+
 		$('#options').fadeOut();
 		$('#select').fadeOut();
-		$('#registro').fadeIn();
+		
+		var tipo = $('input:radio[name=tipo]:checked').val();
+
+		if(tipo!='alumno'){
+			$('#registro').fadeIn();
+		}else{
+			window.location.href = "/accounts/registro/alumno";
+		}
+
 	})
 
 {%endblock scripts%}

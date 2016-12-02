@@ -2,25 +2,25 @@
 {%load static%}
 
 {%block titulo%}
-	Padres
+	Profesores
 {%endblock titulo%}
 
 {%block content%}
 
-	{%for padre in object_list%}
+	{%for profe in object_list%}
 	
     <div class="col s12 m6">
       <div class="card blue-grey lighten-5">
         <div class="card-image">
-          {%if padre.avatar%}
-          	<img src="{{padre.avatar.url}}" alt="">
+          {%if profe.avatar%}
+          	<img src="{{profe.avatar.url}}" alt="">
           {%else%}
           	<img src="{%static 'img/silueta.jpg'%}">
           {%endif%}
-          <span class="card-title">{{padre.user.first_name}} {{padre.user.last_name}} </span>
+          <span class="card-title">{{profe.user.first_name}} {{profe.user.last_name}} </span>
         </div>
         <div class="card-content">
-          <p>{{padre.bio}}</p>
+          <p>{{profe.bio}}</p>
         </div>
         <div class="card-action">
           <a href="#">Ver</a>

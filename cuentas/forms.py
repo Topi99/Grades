@@ -16,6 +16,10 @@ class UserRegistroForm(forms.ModelForm):
 			raise forms.ValidationError('Las contraseñas no coinciden')
 		return cd['password2']
 
+class AlumnoRegistroForm(UserRegistroForm):
+	padre_id = forms.CharField(label="ID de tu padre o madre", widget=forms.TextInput)
+	profesor_id = forms.CharField(label="ID de tu profesor", widget=forms.TextInput)
+
 class UserEditForm(forms.ModelForm):
 	class Meta():
 		model = User

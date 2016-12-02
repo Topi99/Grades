@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View, ListView
 
-from .forms import UserRegistroForm, PadreForm, AlumnoForm, ProfesorForm, UserEditForm
+from .forms import UserRegistroForm, PadreForm, AlumnoForm, ProfesorForm, UserEditForm, AlumnoRegistroForm
 
 from .models import Profesor, Alumno, Padre
 
@@ -91,7 +91,7 @@ class Registro(View):
 		form = UserRegistroForm()
 
 		context = {
-			'form':form
+			'form':form,
 		}
 
 		return render(request, template_name, context)
@@ -111,10 +111,6 @@ class Registro(View):
 				print("como profesor")
 				perfil = Profesor()
 
-			elif q == 'alumno':
-				print("como alumno")
-				perfil = Alumno()
-
 			elif q == 'padre':
 				print("como padre")
 				perfil = Padre()
@@ -122,11 +118,47 @@ class Registro(View):
 			perfil.user = new_user
 			perfil.save()
 
-			return redirect('perfil')
+			return redirect('cuentas:perfil')
 
 		else:
 			print("Error")
 			return render(request, template_name)
 
+class RegistroAlumno(View):
+	def get(self, request):
+		template_name = 'registro_a.html'
+		form = AlumnoRegistroForm()
+
+		context = {
+			'form':form,
+		}
+
+		return render(request, template_name, context)
+
+	def post(self, request):
+		template_name = 'registro.html'
+
+		new_user_form = AlumnoRegistroForm(request.POST)
+
+		if new_user_form.is_valid():
+			new_user = new_user_form.save(commit=False)
+			new_user.set_password(new_user_form.cleaned_data['password'])
+			new_user.save()
+
+			perfil = Alumno()
+			perfil.user = new_user
+			perfil.padre = Padre.objects.get(id=int(new_user_form.cleaned_data['padre_id']))
+			perfil.profesor = Profesor.objects.get(id=int(new_user_form.cleaned_data['profesor_id']))
+			perfil.save()
+
+			return redirect('cuentas:perfil')
+		else:
+			print("Error")
+			return render(request, template_name)
+
+
 class PadresListView(ListView):
 	model = Padre
+
+class ProfesListView(ListView):
+	model = Profesor

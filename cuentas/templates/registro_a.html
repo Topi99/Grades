@@ -1,0 +1,35 @@
+{%extends 'base.html'%}
+
+{%block titulo%}
+	¡Registrate!
+{%endblock titulo%}
+
+{%block content%}
+	
+	{%if form.errors%}
+          <p>Ha ocurrido un error</p>
+  {%else%}
+          <p>Ingresa tus datos para pertenecer a esta comunidad</p>
+  {%endif%}
+
+
+	{%if tipo == null%}
+		<form action="." method="post" class=" col s12">
+			{%csrf_token%}
+
+			<div id="registro">
+				
+				{{form.as_p}}
+
+				<input type="submit" class="btn">
+
+			</div>		
+
+		</form>
+	{%else%}
+
+		<p>{{tipo}}</p>
+
+	{%endif%}
+
+{%endblock content%}

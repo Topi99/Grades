@@ -32,8 +32,8 @@ class Alumno(models.Model):
 	avatar = models.ImageField(upload_to="users/%Y/%m/%d", blank=True)
 	bio = models.TextField(blank=True, null=True)
 	tel = models.IntegerField(default=000, blank=True, null=True)
-	profesor = models.ForeignKey(Profesor, related_name='alumnos')
-	padre = models.ForeignKey(Padre, related_name='hijos')
+	profesor = models.ForeignKey(Profesor, related_name='alumnos', blank=True, null=True)
+	padre = models.ForeignKey(Padre, related_name='hijos', blank=True, null=True)
 	tipo = models.CharField(default='Alumno', max_length=8)
 
 	def __str__(self):

@@ -7,8 +7,10 @@ from .api import urls as UrlsAPICuentas
 
 urlpatterns = [
 	url(r'^registro/$', views.Registro.as_view(), name="registro"),
+	url(r'^registro/alumno/$', views.RegistroAlumno.as_view(), name="registro_alumno"),
 	url(r'^api/', include(UrlsAPICuentas, namespace="api")),
 	url(r'^padres/$', views.PadresListView.as_view(), name="padres"),
+	url(r'^profesores/$', views.ProfesListView.as_view(), name="profesores"),
 	url(r'^profile/$', views.Dashboard.as_view(), name="perfil"),
 	url(r'^login/$', login, name="login"),
   url(r'^logout/$', logout, name="logout"),
