@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Grades | Home</title>
-	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
 	<link rel="stylesheet" href="{%static 'css/main.css'%}">
   <style>
@@ -38,7 +38,7 @@
       <ul class="right hide-on-med-and-down">
         <li><a href="#!">Alumnos</a></li>
         <li><a href="{%url 'cuentas:profesores' %}">Profesores</a></li>
-        <li><a href="{%url 'cuentas:padres'%}">Padres</a></li>
+        <li><a href="{%url 'boletas:grupos'%}">Grupos</a></li>
         {%if request.user.is_authenticated%}
           <li><a href="{%url 'cuentas:logout'%}">Cerrar Sesion</a></li>
           <li><a href="{%url 'cuentas:perfil'%}">Perfil</a></li>
@@ -47,7 +47,7 @@
       <ul class="side-nav" id="mobile-demo" style="z-index:1000;">
         <li><a href="#!">Alumnos</a></li>
         <li><a href="{%url 'cuentas:profesores' %}">Profesores</a></li>
-        <li><a href="{%url 'cuentas:padres'%}">Padres</a></li>
+        <li><a href="{%url 'boletas:grupos'%}">Grupos</a></li>
         {%if request.user.is_authenticated%}
           <li><a href="{%url 'cuentas:logout'%}">Cerrar Sesion</a></li>
           <li><a href="{%url 'cuentas:perfil'%}">Perfil</a></li>
@@ -82,9 +82,11 @@
           
           <ul>
         		{%if request.user.is_authenticated%}
-	          	<li><a href="#">Opcion</a></li>
-	          	<li><a href="#">Opcion</a></li>
-	          	<li><a href="#">Opcion</a></li>
+              {%block opciones%}
+                {%if request.user.profesor%}
+                  <li><a href="{%url 'boletas:crear_grupo'%}">Crear un Grupo</a></li>
+                {%endif%}
+	          	{%endblock opciones%}
 						{%else%}
 							<p>Autenticate para ver opciones.</p>
 		        {%endif%}

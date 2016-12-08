@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from cuentas.models import Profesor, Alumno
 
 class Grupo(models.Model):
-	profesor = models.ManyToManyField(Profesor)
-	alumno = models.ManyToManyField(Alumno, blank=True)
+	profesores = models.ManyToManyField(Profesor, related_name='grupos', blank=True)
+	alumnos = models.ManyToManyField(Alumno, blank=True, related_name='grupos')
 	nombre = models.CharField(max_length=30)
 
 class Materia(models.Model):

@@ -1,0 +1,15 @@
+{%extends 'base.html'%}
+
+{%block titulo%}
+	Grupos a los que perteneces
+{%endblock titulo%}
+
+{%block content%}
+
+	{%for grupo in grupos%}
+		<h4>{{grupo.nombre}}</h4>
+	{%empty%}
+		<h4>¡No perteneces a ningun grupo!</h4>
+	{%endfor%}
+
+{%endblock content%}
