@@ -85,6 +85,7 @@
               {%block opciones%}
                 {%if request.user.profesor%}
                   <li><a href="{%url 'boletas:crear_grupo'%}">Crear un Grupo</a></li>
+                  <li><a href="{%url 'boletas:grupos'%}">Mis Grupos</a></li>
                 {%endif%}
 	          	{%endblock opciones%}
 						{%else%}

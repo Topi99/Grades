@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse_lazy
 
 from django.views.generic import ListView, TemplateView, View
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+# from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Grupo, Materia, Parcial, Calificacion
 
@@ -71,7 +71,7 @@ class GruposCreate(View):
 			new_group.profesores.add(request.user.profesor)
 			new_group_form.save_m2m()
 
-			return redirect('boletas')	
+			return redirect('boletas:grupos')	
 		else:
 			form = GruposForm()
 			context = {
